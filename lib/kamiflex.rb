@@ -1,3 +1,4 @@
+require "json"
 require "kamiflex/core"
 require "kamiflex/basic_elements"
 require "kamiflex/actions"
