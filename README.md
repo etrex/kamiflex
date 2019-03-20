@@ -3,7 +3,7 @@ provide a pretty DSL to build your flex message like this:
 
 #### in ruby
 ``` ruby
-# flex_sample.rb
+# example/todos_index.rb
 require 'kamiflex'
 
 @todos = [
@@ -21,7 +21,7 @@ require 'kamiflex'
   }
 ]
 
-puts Kamiflex.build(self) do
+json = Kamiflex.build(self) do
   bubble do
     body do
       horizontal_box do
@@ -43,7 +43,12 @@ puts Kamiflex.build(self) do
     end
   end
 end
+
+puts json
 ```
+
+the render result looks like this:
+
 
 #### in rails
 ``` ruby
@@ -72,13 +77,9 @@ end
 end )%>
 ```
 
-the render result looks like this:
+I will make a template name `flex` for rails in the future.
 
-
-
-
-I will add a template name `flex` for rails in the future.
-
+With this template, it's more clear then `erb`.
 ``` ruby
 # todos/index.line.flex
 bubble do
