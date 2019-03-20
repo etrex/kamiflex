@@ -1,5 +1,5 @@
 # Kamiflex
-provide a pretty DSL to build your flex message like this:
+provide a pretty DSL to build your [flex message of line messaging api](https://developers.line.biz/en/docs/messaging-api/using-flex-messages/) like this:
 
 #### in pure ruby
 ``` ruby
