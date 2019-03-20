@@ -1,4 +1,3 @@
-require "kamiflex/railtie"
 require "kamiflex/core"
 require "kamiflex/basic_elements"
 require "kamiflex/actions"
@@ -13,3 +12,6 @@ module Kamiflex
     JSON.pretty_generate yield
   end
 end
+
+Mime::Type.register "application/json", :line if defined?(Rails)
+require "kamiflex/railtie" if defined?(Rails)

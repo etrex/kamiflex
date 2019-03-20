@@ -1,8 +1,107 @@
 # Kamiflex
-Short description and motivation.
+provide a pretty DSL to build your flex message like this:
 
-## Usage
-How to use my plugin.
+#### in ruby
+``` ruby
+# flex_sample.rb
+require 'kamiflex'
+
+@todos = [
+  {
+    id: 1,
+    name: "ruby"
+  },
+  {
+    id: 2,
+    name: "rails"
+  },
+  {
+    id: 3,
+    name: "kamiflex"
+  }
+]
+
+puts Kamiflex.build(self) do
+  bubble do
+    body do
+      horizontal_box do
+        text "🍔", flex: 0, action: message_action("/")
+        text "Todos"
+        text "🆕", align: "end", action: uri_action(new_todo_path))
+      end
+      separator
+      if @todos.present?
+        vertical_box margin: "lg" do
+          horizontal_box @todos, margin: "lg" do |todo|
+            text todo[:name], action: message_action("/todos/#{todo[:id]}")
+            text "❌", align: "end", action: message_action("DELETE /todos/#{todo[:id]}")
+          end
+        end
+      else
+        text "no contents yet", margin: "lg"
+      end
+    end
+  end
+end
+```
+
+#### in rails
+``` ruby
+# todos/index.line.erb
+<%= raw(Kamiflex.build(self) do
+  bubble do
+    body do
+      horizontal_box do
+        text "🍔", flex: 0, action: message_action("/")
+        text "Todos"
+        text "🆕", align: "end", action: uri_action(new_todo_path))
+      end
+      separator
+      if @todos.present?
+        vertical_box margin: "lg" do
+          horizontal_box @todos, margin: "lg" do |todo|
+            text todo.name, action: message_action("/todos/#{todo.id}")
+            text "❌", align: "end", action: message_action("DELETE /todos/#{todo.id}")
+          end
+        end
+      else
+        text "no contents yet", margin: "lg"
+      end
+    end
+  end
+end )%>
+```
+
+the render result looks like this:
+
+
+
+
+I will add a template name `flex` for rails in the future.
+
+``` ruby
+# todos/index.line.flex
+bubble do
+  body do
+    horizontal_box do
+      text "🍔", flex: 0, action: message_action("/")
+      text "Todos"
+      text "🆕", align: "end", action: uri_action(new_todo_path))
+    end
+    separator
+    if @todos.present?
+      vertical_box margin: "lg" do
+        horizontal_box @todos, margin: "lg" do |todo|
+          text todo.name, action: message_action("/todos/#{todo.id}")
+          text "❌", align: "end", action: message_action("DELETE /todos/#{todo.id}")
+        end
+      end
+    else
+      text "no contents yet", margin: "lg"
+    end
+  end
+end
+```
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -10,19 +109,6 @@ Add this line to your application's Gemfile:
 ```ruby
 gem 'kamiflex'
 ```
-
-And then execute:
-```bash
-$ bundle
-```
-
-Or install it yourself as:
-```bash
-$ gem install kamiflex
-```
-
-## Contributing
-Contribution directions go here.
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
