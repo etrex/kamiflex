@@ -49,6 +49,7 @@ puts json
 
 the render result looks like this:
 
+![](image/todos_index.png)
 
 #### in rails
 ``` ruby
