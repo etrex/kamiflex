@@ -1,5 +1,5 @@
 # Kamiflex
-provide a pretty DSL to build your [flex message of line messaging api](https://developers.line.biz/en/docs/messaging-api/using-flex-messages/) like this:
+Kamiflex provide a pretty DSL to build your [flex message of line messaging api](https://developers.line.biz/en/docs/messaging-api/using-flex-messages/) like this:
 
 #### in pure ruby
 ``` ruby
@@ -47,7 +47,7 @@ end
 puts json
 ```
 
-the render result looks like this:
+The render result looks like this:
 
 ![](image/todos_index.png)
 
@@ -81,6 +81,7 @@ end )%>
 I will make a template name `flex` for rails in the future.
 
 With this template, it's more clear then `erb`.
+
 ``` ruby
 # todos/index.line.flex
 bubble do
@@ -113,7 +114,7 @@ gem 'kamiflex'
 ```
 
 ## Author
-create by [etrex](https://etrex.tw)
+Create by [etrex](https://etrex.tw)
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
