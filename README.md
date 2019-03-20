@@ -1,7 +1,7 @@
 # Kamiflex
 provide a pretty DSL to build your flex message like this:
 
-#### in ruby
+#### in pure ruby
 ``` ruby
 # example/todos_index.rb
 require 'kamiflex'
