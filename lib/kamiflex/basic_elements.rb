@@ -36,6 +36,12 @@ module Kamiflex
       }.merge(params)
     end
 
+    def filler
+      @flex_contents << {
+        "type": "filler"
+      }
+    end
+
     def url_button(label, url, **params)
       @flex_contents << {
         "type": "button",
