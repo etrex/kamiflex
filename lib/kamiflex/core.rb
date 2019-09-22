@@ -44,8 +44,10 @@ module Kamiflex
     end
 
     def hero(image_url, **params)
-      _attributes, _contents = flex_scope{ yield }
-      @flex_attributes[:hero] = {}
+      @flex_attributes[:hero] = {
+        "type": "image",
+        "url": image_url
+      }.merge(params)
     end
 
     def body(**params)

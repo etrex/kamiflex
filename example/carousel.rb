@@ -1,4 +1,4 @@
-require '../lib/kamiflex'
+require_relative '../lib/kamiflex'
 
 json = Kamiflex.build(self) do
   carousel do
