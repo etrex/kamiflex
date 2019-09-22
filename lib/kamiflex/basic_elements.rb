@@ -63,5 +63,28 @@ module Kamiflex
         }
       }.merge(params)
     end
+
+    def postback_button(label, data, **params)
+      @flex_contents << {
+        "type": "button",
+        "action": {
+          "type": "postback",
+          "label": label,
+          "data": data,
+        }
+      }.merge(params)
+    end
+
+    def postback_text_button(label, message, data, **params)
+      @flex_contents << {
+        "type": "button",
+        "action": {
+          "type": "postback",
+          "label": label,
+          "displayText": message,
+          "data": data,
+        }
+      }.merge(params)
+    end
   end
 end

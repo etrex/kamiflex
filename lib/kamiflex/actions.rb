@@ -18,5 +18,12 @@ module Kamiflex
         # }
       }
     end
+
+    def postback_action(data, **params)
+      {
+        type: "postback",
+        data: data
+      }.merge(params)
+    end
   end
 end
