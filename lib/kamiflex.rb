@@ -1,8 +1,8 @@
 require "json"
-require "kamiflex/core"
-require "kamiflex/basic_elements"
-require "kamiflex/actions"
-require "kamiflex/quick_reply"
+require_relative "./kamiflex/core"
+require_relative "./kamiflex/basic_elements"
+require_relative "./kamiflex/actions"
+require_relative "./kamiflex/quick_reply"
 
 module Kamiflex
   def self.build(parent)
@@ -10,9 +10,15 @@ module Kamiflex
     parent.class.include Kamiflex::BasicElements
     parent.class.include Kamiflex::Actions
     parent.class.include Kamiflex::QuickReply
-    JSON.pretty_generate yield
+
+    hash = parent.instance_exec do
+      flex do
+        yield
+      end
+    end
+    JSON.pretty_generate hash
   end
 end
 
-Mime::Type.register "application/json", :line if defined?(Rails)
-require "kamiflex/railtie" if defined?(Rails)
+Mime::Type.register_alias "application/json", :line if defined?(Rails)
+require_relative "./kamiflex/railtie" if defined?(Rails)

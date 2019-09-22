@@ -1,14 +1,36 @@
 module Kamiflex
   module Core
-    def bubble
+    def flex
       attributes, _contents = flex_scope{ yield }
       {
         type: "flex",
         altText: "this is a flex message",
-        contents: {
-          type: "bubble"
-        }.merge(attributes.slice(:header, :hero, :body, :footer, :style))
+        contents: _contents.first
       }.merge(attributes.slice(:quickReply))
+    end
+
+    def bubble
+      attributes, _contents = flex_scope{ yield }
+      @flex_contents << {
+        type: "bubble"
+      }.merge(attributes.slice(:size, :direction, :header, :hero, :body, :footer, :style, :action))
+    end
+
+    def bubbles(resources)
+      resources.each do |resource|
+        attributes, _contents = flex_scope{ yield resource }
+        @flex_contents << {
+          type: "bubble",
+        }.merge(attributes.slice(:size, :direction, :header, :hero, :body, :footer, :style, :action))
+      end
+    end
+
+    def carousel
+      attributes, _contents = flex_scope{ yield }
+      @flex_contents << {
+        type: "carousel",
+        contents: _contents
+      }
     end
 
     # bubble attributes

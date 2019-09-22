@@ -1,4 +1,4 @@
-require 'kamiflex'
+require '../lib/kamiflex'
 
 @todos = [
   {
