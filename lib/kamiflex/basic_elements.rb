@@ -16,7 +16,7 @@ module Kamiflex
 
     def icon(url, **params)
       @flex_contents << {
-        "type": "image",
+        "type": "icon",
         "url": url
       }.merge(params)
     end
