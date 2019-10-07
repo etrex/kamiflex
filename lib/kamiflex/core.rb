@@ -17,7 +17,7 @@ module Kamiflex
     end
 
     def bubbles(resources)
-      resources.each_with_index do |resource|
+      resources.each_with_index do |resource, index|
         attributes, _contents = flex_scope{ yield(resource, index) }
         @flex_contents << {
           type: "bubble",
