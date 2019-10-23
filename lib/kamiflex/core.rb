@@ -13,7 +13,7 @@ module Kamiflex
       attributes, _contents = flex_scope{ yield }
       @flex_contents << {
         type: "bubble"
-      }.merge(attributes.slice(:size, :direction, :header, :hero, :body, :footer, :style, :action))
+      }.merge(attributes.slice(:size, :direction, :header, :hero, :body, :footer, :styles, :action))
     end
 
     def bubbles(resources)
@@ -21,7 +21,7 @@ module Kamiflex
         attributes, _contents = flex_scope{ yield(resource, index) }
         @flex_contents << {
           type: "bubble",
-        }.merge(attributes.slice(:size, :direction, :header, :hero, :body, :footer, :style, :action))
+        }.merge(attributes.slice(:size, :direction, :header, :hero, :body, :footer, :styles, :action))
       end
     end
 
@@ -81,8 +81,8 @@ module Kamiflex
     end
 
     # style
-    def style(params)
-      @flex_attributes[:style] = params
+    def styles(params)
+      @flex_attributes[:styles] = params
     end
 
     def vertical_box(resources = [nil], **params, &block)
