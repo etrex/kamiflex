@@ -80,6 +80,11 @@ module Kamiflex
       end
     end
 
+    # style
+    def style(params)
+      @flex_attributes[:style] = params
+    end
+
     def vertical_box(resources = [nil], **params, &block)
       horizontal_box(resources, layout: "vertical", **params, &block)
     end
