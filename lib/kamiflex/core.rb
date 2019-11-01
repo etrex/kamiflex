@@ -9,19 +9,21 @@ module Kamiflex
       }.merge(attributes.slice(:quickReply))
     end
 
-    def bubble
+    def bubble(**params)
       attributes, _contents = flex_scope{ yield }
       @flex_contents << {
         type: "bubble"
       }.merge(attributes.slice(:size, :direction, :header, :hero, :body, :footer, :styles, :action))
+      .merge(params)
     end
 
-    def bubbles(resources)
+    def bubbles(resources, **params)
       resources.each_with_index do |resource, index|
         attributes, _contents = flex_scope{ yield(resource, index) }
         @flex_contents << {
           type: "bubble",
         }.merge(attributes.slice(:size, :direction, :header, :hero, :body, :footer, :styles, :action))
+        .merge(params)
       end
     end
 
