@@ -70,6 +70,15 @@ module Kamiflex
       }.merge(params)
     end
 
+    # style
+    def styles(params)
+      @flex_attributes[:styles] = params
+    end
+
+    def alt_text(text)
+      @flex_attributes[:altText] = text
+    end
+
     # container
     def horizontal_box(resources = [nil], **params)
       resources.each_with_index do |resource, index|
@@ -80,11 +89,6 @@ module Kamiflex
           contents: contents
         }.merge(params)
       end
-    end
-
-    # style
-    def styles(params)
-      @flex_attributes[:styles] = params
     end
 
     def vertical_box(resources = [nil], **params, &block)
