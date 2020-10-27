@@ -6,7 +6,7 @@ module Kamiflex
         type: "flex",
         altText: "this is a flex message",
         contents: _contents.first
-      }.merge(attributes.slice(:quickReply))
+      }.merge(attributes.slice(:quickReply, :altText))
     end
 
     def bubble(**params)
