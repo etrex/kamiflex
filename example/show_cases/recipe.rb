@@ -1,5 +1,5 @@
 require 'kamiflex'
-json = Kamiflex.build(self) do
+json = Kamiflex.json(self) do
   bubble do
     body do
       vertical_box do

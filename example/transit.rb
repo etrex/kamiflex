@@ -1,6 +1,6 @@
 require_relative '../lib/kamiflex'
 
-json = Kamiflex.build(self) do
+json = Kamiflex.json(self) do
   bubble  do
     body do
       vertical_box do
@@ -18,7 +18,7 @@ json = Kamiflex.build(self) do
         end
 
         horizontal_box spacing: "lg", height: "64px" do
-          baseline_box flex: 1 do 
+          baseline_box flex: 1 do
             filler
           end
           vertical_box width: "12px" do
@@ -44,8 +44,8 @@ json = Kamiflex.build(self) do
           text "B station", size: "sm", gravity: "center", flex: 4
         end
       end
-      
-      
+
+
     end
   end
 end

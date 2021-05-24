@@ -15,6 +15,14 @@ json = Kamiflex.json(self) do
       end
     end
   end
+  quick_reply do
+    message_action_item "道具1"
+    message_action_item "道具2"
+    message_action_item "道具3"
+    message_action_item "道具4"
+    message_action_item "道具5"
+    message_action_item "道具6"
+  end
 end
 
 puts json

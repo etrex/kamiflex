@@ -1,6 +1,6 @@
 require_relative '../lib/kamiflex'
 
-hash = Kamiflex.to_hash(self) do
+hash = Kamiflex.hash(self) do
   bubble do
     body do
       horizontal_box margin: "md" do

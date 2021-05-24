@@ -1,6 +1,6 @@
 require_relative '../lib/kamiflex'
 
-json = Kamiflex.build(self) do
+json = Kamiflex.json(self) do
   carousel do
     bubbles [1,2,3] do |i|
       body do

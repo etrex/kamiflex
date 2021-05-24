@@ -6,7 +6,7 @@ require_relative "./kamiflex/quick_reply"
 require_relative "./kamiflex/custom"
 
 module Kamiflex
-  def self.to_hash(parent)
+  def self.hash(parent, &block)
     parent.class.include Kamiflex::Core
     parent.class.include Kamiflex::BasicElements
     parent.class.include Kamiflex::Actions
@@ -15,24 +15,25 @@ module Kamiflex
 
     parent.instance_exec do
       flex do
-        yield
+        parent.instance_exec(&block)
       end
     end
   end
 
-  def self.build(parent)
-    parent.class.include Kamiflex::Core
-    parent.class.include Kamiflex::BasicElements
-    parent.class.include Kamiflex::Actions
-    parent.class.include Kamiflex::QuickReply
-    parent.class.include Kamiflex::Custom
+  def self.to_hash(parent, &block)
+    self.hash(parent, &block)
+  end
 
-    hash = parent.instance_exec do
-      flex do
-        yield
-      end
-    end
-    JSON.pretty_generate hash
+  def self.build(parent, &block)
+    JSON.pretty_generate self.hash(parent, &block)
+  end
+
+  def self.json(parent, &block)
+    self.build(parent, &block)
+  end
+
+  def self.compact_json(parent, &block)
+    self.to_hash(parent, &block).to_json
   end
 end
 

@@ -12,7 +12,7 @@ require_relative '../lib/kamiflex'
   }
 ]
 
-json = Kamiflex.build(self) do
+json = Kamiflex.json(self) do
   bubble do
     body do
       vertical_box @resources do |resource, index|
