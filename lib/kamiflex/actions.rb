@@ -4,7 +4,7 @@ module Kamiflex
       {
         type: "message",
         label: label,
-        text: label
+        text: params[:text] || label
       }.merge(params)
     end
 
