@@ -9,14 +9,19 @@ module Kamiflex
     end
 
     def uri_action(uri, **params)
-      {
+      action = {
         type: "uri",
         label: uri[0...40],
-        uri: uri,
-        # altUri: {
-        #   desktop: uri
-        # }
+        uri: uri
       }
+
+      if params[:desktop].present?
+        action[:altUri] = {
+          desktop: params[:desktop]
+        }
+      end
+
+      action
     end
 
     def postback_action(data, **params)

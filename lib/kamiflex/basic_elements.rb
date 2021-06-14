@@ -43,13 +43,22 @@ module Kamiflex
     end
 
     def url_button(label, url, **params)
-      @flex_contents << {
-        "type": "button",
-        "action": {
-          "type": "uri",
-          "label": label,
-          "uri": url
+      action = {
+        type: "uri",
+        label: label,
+        uri: url,
+      }
+
+      if params[:desktop].present?
+        action[:altUri] = {
+          desktop: params[:desktop]
         }
+        params = params.reject {|key, value| key == :desktop }
+      end
+
+      @flex_contents << {
+        type: "button",
+        action: action
       }.merge(params)
     end
 
