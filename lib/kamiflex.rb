@@ -1,4 +1,5 @@
 require "json"
+require_relative "./kamiflex/version"
 require_relative "./kamiflex/core"
 require_relative "./kamiflex/basic_elements"
 require_relative "./kamiflex/actions"

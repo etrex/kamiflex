@@ -15,11 +15,12 @@ module Kamiflex
         uri: uri
       }
 
-      if params[:desktop].present?
-        action[:altUri] = {
-          desktop: params[:desktop]
-        }
-      end
+      return action if params.nil?
+      return action if params[:desktop].nil?
+
+      action[:altUri] = {
+        desktop: params[:desktop]
+      }
 
       action
     end
