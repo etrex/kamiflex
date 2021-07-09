@@ -49,9 +49,9 @@ module Kamiflex
         uri: url,
       }
 
-      if params[:desktop].present?
+      if params&.dig(:desktop)
         action[:altUri] = {
-          desktop: params[:desktop]
+          desktop: params&.dig(:desktop)
         }
         params = params.reject {|key, value| key == :desktop }
       end
