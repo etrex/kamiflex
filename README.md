@@ -1,6 +1,11 @@
 # Kamiflex
 Kamiflex provide a pretty DSL to build your [flex message of line messaging api](https://developers.line.biz/en/docs/messaging-api/using-flex-messages/) like this:
 
+
+# Live Demo
+
+[Kamiflex Simulator](https://kamiflex.etrex.tw/)
+
 #### in pure ruby
 
 # [example/show_cases/cards.rb](example/show_cases/cards.rb)
