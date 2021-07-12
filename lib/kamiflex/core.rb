@@ -82,11 +82,11 @@ module Kamiflex
     # container
     def horizontal_box(resources = [nil], **params)
       resources.each_with_index do |resource, index|
-        _attributes, contents = flex_scope{ yield(resource, index) }
+        _attributes, contents = flex_scope{ yield(resource, index) } if block_given?
         @flex_contents << {
           type: "box",
           layout: "horizontal",
-          contents: contents
+          contents: contents || []
         }.merge(params)
       end
     end

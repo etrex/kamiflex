@@ -1,8 +1,23 @@
 module Kamiflex
   module BasicElements
-    def text(message, **params)
+    def text(message = nil, **params)
+      if block_given?
+        _attributes, contents = flex_scope{ yield }
+        @flex_contents << {
+          type: "text",
+          contents: contents,
+        }.merge(params)
+      else
+        @flex_contents << {
+          type: "text",
+          text: message
+        }.merge(params)
+      end
+    end
+
+    def span(message, **params)
       @flex_contents << {
-        "type": "text",
+        "type": "span",
         "text": message
       }.merge(params)
     end
