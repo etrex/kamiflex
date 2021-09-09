@@ -1,13 +1,13 @@
 PATH
   remote: .
   specs:
-    kamiflex (0.8.0)
+    kamiflex (0.17.0)
       json
 
 GEM
   remote: https://rubygems.org/
   specs:
-    json (2.3.1)
+    json (2.5.1)
 
 PLATFORMS
   ruby
@@ -16,4 +16,4 @@ DEPENDENCIES
   kamiflex!
 
 BUNDLED WITH
-   2.0.2
+   2.2.25
