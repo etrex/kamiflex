@@ -1,4 +1,5 @@
 require 'kamiflex'
+require 'clipboard'
 
 @products = [
   {
@@ -46,7 +47,8 @@ def field(key, value)
   end
 end
 
-json = Kamiflex.compact_json(self) do
+json = Kamiflex.json(self) do
+  alt_text "LINE Flex Message Showcase: Cards"
   carousel do
     bubbles @products do |product|
       hero "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
@@ -66,6 +68,6 @@ json = Kamiflex.compact_json(self) do
       end
     end
   end
-end.to_json
+end
 
 puts json

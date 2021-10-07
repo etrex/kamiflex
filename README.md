@@ -8,7 +8,7 @@ Kamiflex provide a pretty DSL to build your [flex message of line messaging api]
 
 #### in pure ruby
 
-# [example/show_cases/cards.rb](example/show_cases/cards.rb)
+# [example/cards.rb](example/cards.rb)
 
 ``` ruby
 require 'kamiflex'

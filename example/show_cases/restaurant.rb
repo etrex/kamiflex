@@ -1,6 +1,9 @@
-require "kamiflex"
+require 'kamiflex'
+require 'clipboard'
 
-json = Kamiflex.hash(self) do
+json = Kamiflex.json(self) do
+  alt_text "LINE Flex Message Showcase: Restaurant"
+
   bubble do
     hero "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
       size: :full, aspectRatio: "20:13", aspectMode: :cover, action: uri_action("http://linecorp.com/")
@@ -16,12 +19,12 @@ json = Kamiflex.hash(self) do
       end
       vertical_box margin: :lg, spacing: :sm do
         baseline_box spacing: :sm do
-          text "Place", "color": "#aaaaaa", "size": "sm", "flex": 1
-          text "Miraina Tower, 4-1-6 Shinjuku, Tokyo", "wrap": true, "color": "#666666", "size": "sm", "flex": 5
+          text "Place", color: "#aaaaaa", size: :sm, flex: 1
+          text "Miraina Tower, 4-1-6 Shinjuku, Tokyo", wrap: true, color: "#666666", size: :sm, flex: 5
         end
         baseline_box spacing: :sm do
-          text "Time", "color": "#aaaaaa", "size": "sm", "flex": 1
-          text "10:00 - 23:00", "wrap": true, "color": "#666666", "size": "sm", "flex": 5
+          text "Time", color: "#aaaaaa", size: :sm, flex: 1
+          text "10:00 - 23:00", "wrap": true, color: "#666666", size: :sm, flex: 5
         end
       end
     end
@@ -31,6 +34,7 @@ json = Kamiflex.hash(self) do
       spacer size: :sm
     end
   end
-end.to_json
+end
 
 puts json
+Clipboard.copy json
