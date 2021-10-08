@@ -1,6 +1,9 @@
 # Kamiflex
 Kamiflex provide a pretty DSL to build your [flex message of line messaging api](https://developers.line.biz/en/docs/messaging-api/using-flex-messages/) like this:
 
+# Document
+
+[https://etrex.tw/kamigo/05_kamiflex.html](https://etrex.tw/kamigo/05_kamiflex.html)
 
 # Live Demo
 
