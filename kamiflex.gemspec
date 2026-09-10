@@ -25,5 +25,8 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
+  spec.required_ruby_version = ">= 3.3"
   spec.add_dependency "json"
+  spec.add_development_dependency "minitest"
+  spec.add_development_dependency "rake"
 end

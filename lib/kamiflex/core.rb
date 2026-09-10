@@ -28,7 +28,7 @@ module Kamiflex
     end
 
     def carousel
-      attributes, _contents = flex_scope{ yield }
+      _attributes, _contents = flex_scope{ yield }
       @flex_contents << {
         type: "carousel",
         contents: _contents

@@ -1,42 +1,32 @@
-require "json"
-require_relative "./kamiflex/version"
-require_relative "./kamiflex/core"
-require_relative "./kamiflex/basic_elements"
-require_relative "./kamiflex/actions"
-require_relative "./kamiflex/quick_reply"
-require_relative "./kamiflex/custom"
+# frozen_string_literal: true
+require 'json'
+require_relative 'kamiflex/version'
+require_relative 'kamiflex/core'
+require_relative 'kamiflex/basic_elements'
+require_relative 'kamiflex/actions'
+require_relative 'kamiflex/quick_reply'
+require_relative 'kamiflex/custom'
+require_relative 'kamiflex/builder'
 
 module Kamiflex
-  def self.hash(parent, &block)
-    parent.class.include Kamiflex::Core
-    parent.class.include Kamiflex::BasicElements
-    parent.class.include Kamiflex::Actions
-    parent.class.include Kamiflex::QuickReply
-    parent.class.include Kamiflex::Custom
-
-    parent.instance_exec do
-      flex do
-        parent.instance_exec(&block)
-      end
+  class << self
+    # Every call owns its state. The optional context supplies public helpers only;
+    # neither its class nor its instance variables are modified or copied.
+    def hash(context = nil, &block)
+      raise ArgumentError, 'a builder block is required' unless block
+      Builder.new(context: context).render(&block)
     end
-  end
+    alias to_hash hash
 
-  def self.to_hash(parent, &block)
-    self.hash(parent, &block)
-  end
+    def build(context = nil, &block)
+      JSON.pretty_generate(hash(context, &block))
+    end
+    alias json build
 
-  def self.build(parent, &block)
-    JSON.pretty_generate self.hash(parent, &block)
-  end
-
-  def self.json(parent, &block)
-    self.build(parent, &block)
-  end
-
-  def self.compact_json(parent, &block)
-    self.to_hash(parent, &block).to_json
+    def compact_json(context = nil, &block)
+      JSON.generate(hash(context, &block))
+    end
   end
 end
 
-Mime::Type.register_alias "application/json", :line if defined?(Rails)
-require_relative "./kamiflex/railtie" if defined?(Rails)
+require_relative 'kamiflex/railtie' if defined?(Rails::Railtie)
